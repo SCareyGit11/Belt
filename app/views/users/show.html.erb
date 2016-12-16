@@ -1,0 +1,22 @@
+<a href="/songs/index">Dashboard</a>
+
+<h3><%=@user.first_name%> <%=@user.last_name%>'s Playlist</h3>
+
+<table>
+<thead>
+	<th>Artist</th>
+	<th>Title</th>
+	<th>Times Added</th>
+</thead>
+<tbody>
+	<% if @user.songs %>
+	<% @user.songs.each do |song| %>
+	<tr>
+		<td> <%=song.artist%></td>
+		<td> <%=song.title%></td>
+		<td> <%=@user.adds.where(song_id:song.id).count%> </td>
+	</tr>
+	<% end %>
+	<% end %>
+</tbody>
+</table>
